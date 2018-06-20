@@ -4,6 +4,7 @@
         <Identity Id="AutoLoadPackageManager.d28343a5-6123-475e-9f5d-63705c8e166e" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
         <DisplayName>VS Package Load Explorer</DisplayName>
         <Description xml:space="preserve">Shows information about how VS packages are loaded in Visual Studio.</Description>
+        <MoreInfo>https://github.com/madskristensen/AutoLoadPackageManager</MoreInfo>
         <License>Resources\LICENSE</License>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
