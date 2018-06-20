@@ -4,11 +4,25 @@
 
 **Requires Visual Studio 2017.6 or newer**
 
-This extension shows the group and menu identifiers of existing commands to make it easy to find out where to place your custom commands.
+This extension makes it easy to diagnose how packages are being loaded in Visual Studio. Both build-in as well as packages comming from external extensions are supported.
 
 
 ## Description 
-Coming soon...
+Shows information about how the VS packages was loaded in the IDE.
+
+![Tool window](art/tool-window.png)
+
+The columns shown are:
+
+* PackageGuid
+* PackageName
+* ModuleName
+* AutoLoadContextGuid
+* AutoLoadContextName
+* IsRuleBasedUIContext
+* UIContextTerms
+* IsAsyncPackage
+* IsAsyncForUIContext
 
 ## License
 [Apache 2.0](LICENSE) 

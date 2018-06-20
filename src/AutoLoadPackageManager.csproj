@@ -71,6 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VSCommandTable.vsct</DependentUpon>
     </Compile>
+    <Compile Include="VsTheme.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\LICENSE">
