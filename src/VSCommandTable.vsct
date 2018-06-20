@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct"/>
+
+  <Commands package="guidAutoLoadPackageManager">
+    <Buttons>
+      <Button guid="guidAutoLoadPackageManagerCmdSet" id="PackageManagerToolWindowCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Icon guid="ImageCatalogGuid" id="DeploymentConfigurationExtension" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>VS Package Load Explorer</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidAutoLoadPackageManager" value="{712bf5cc-618c-43fb-999e-570279df0728}" />
+
+    <GuidSymbol name="guidAutoLoadPackageManagerCmdSet" value="{c8228f23-0c49-4b65-9e37-5e1f45a95799}">
+      <IDSymbol name="PackageManagerToolWindowCommandId" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
