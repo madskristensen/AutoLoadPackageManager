@@ -14,7 +14,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
-            <Button Content="Get List" Click="Button1_Click" Width="120" Height="20" Name="button1"/>
+            <Button Content="Refresh" Click="Button1_Click" Name="button1"/>
         </StackPanel>
         <!--<TextBox Grid.Row="1" Name="tbx_Output"></TextBox>-->
         <DataGrid Grid.Row="1" Name="gridOutput" AutoGenerateColumns="True">

@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Shell.Settings;
 using Task = System.Threading.Tasks.Task;
 
 namespace AutoLoadPackageManager
@@ -24,27 +25,21 @@ namespace AutoLoadPackageManager
 
         public override IVsAsyncToolWindowFactory GetAsyncToolWindowFactory(Guid toolWindowType)
         {
-            if (toolWindowType.Equals(new Guid(PackageManagerToolWindow.WindowGuid)))
-            {
-                return this;
-            }
-
-            return null;
+            return toolWindowType.Equals(new Guid(PackageManagerToolWindow.WindowGuid)) 
+                ? (this) 
+                : null;
         }
 
         protected override string GetToolWindowTitle(Type toolWindowType, int id)
         {
-            if (toolWindowType == typeof(PackageManagerToolWindow))
-            {
-                return PackageManagerToolWindow.Title;
-            }
-
-            return base.GetToolWindowTitle(toolWindowType, id);
+            return toolWindowType == typeof(PackageManagerToolWindow)
+                ? PackageManagerToolWindow.Title
+                : base.GetToolWindowTitle(toolWindowType, id);
         }
 
         protected override Task<object> InitializeToolWindowAsync(Type toolWindowType, int id, CancellationToken cancellationToken)
         {
-            return Task.FromResult<object>(null);
+            return Task.FromResult<object>(new ShellSettingsManager(this));
         }
     }
 }
