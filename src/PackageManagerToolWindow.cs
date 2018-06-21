@@ -9,12 +9,15 @@
     public class PackageManagerToolWindow : ToolWindowPane
     {
         public const string WindowGuid = "ddac3bc3-cd4d-4eb1-b726-af3a4402667f";
-        public const string Title = "VS Package Load Explorer";
+        public const string Title = "Package Load Explorer";
+
+        public PackageManagerToolWindow()
+            : this(new ShellSettingsManager(ServiceProvider.GlobalProvider))
+        { }
 
         public PackageManagerToolWindow(ShellSettingsManager settingsManager) : base(null)
         {
             Caption = Title;
-
             Content = new PackageManagerToolWindowControl(settingsManager);
         }
     }

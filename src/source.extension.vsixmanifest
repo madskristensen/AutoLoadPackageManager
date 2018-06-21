@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="AutoLoadPackageManager.d28343a5-6123-475e-9f5d-63705c8e166e" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
-        <DisplayName>VS Package Load Explorer</DisplayName>
+        <Identity Id="AutoLoadPackageManager.d28343a5-6123-475e-9f5d-63705c8e166e" Version="1.0.999" Language="en-US" Publisher="Mads Kristensen" />
+        <DisplayName>Package Load Explorer</DisplayName>
         <Description xml:space="preserve">Shows information about how VS packages are loaded in Visual Studio.</Description>
         <MoreInfo>https://github.com/madskristensen/AutoLoadPackageManager</MoreInfo>
         <License>Resources\LICENSE</License>
@@ -10,7 +10,7 @@
         <PreviewImage>Resources\Icon.png</PreviewImage>
         <Tags>vsix, extensions</Tags>
     </Metadata>
-    <Installation>
+    <Installation AllUsers="true">
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0.27205, 16.0)" />
     </Installation>
     <Dependencies>

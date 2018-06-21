@@ -6,8 +6,11 @@
 
 This extension makes it easy to diagnose how packages are being loaded in Visual Studio. Both build-in as well as packages comming from external extensions are supported.
 
+## The Package Load Explorer window
+Display it by going to **View -> Other Windows -> Package Load Explroer**.
 
-## Description 
+![Context menu](art/context-menu.png)
+
 Shows information about how the VS packages was loaded in the IDE.
 
 ![Tool window](art/tool-window.png)

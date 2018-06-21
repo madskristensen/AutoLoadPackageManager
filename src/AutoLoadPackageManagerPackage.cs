@@ -13,7 +13,7 @@ namespace AutoLoadPackageManager
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [Guid(PackageGuids.guidAutoLoadPackageManagerString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideToolWindow(toolType: typeof(PackageManagerToolWindow), Style = VsDockStyle.Tabbed, Window = "DocumentWell", Orientation = ToolWindowOrientation.none)]
+    [ProvideToolWindow(typeof(PackageManagerToolWindow), Style = VsDockStyle.Tabbed, Window = "DocumentWell", Orientation = ToolWindowOrientation.none)]
     public sealed class AutoLoadPackageManagerPackage : AsyncPackage
     {
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)

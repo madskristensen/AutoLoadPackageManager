@@ -12,7 +12,7 @@
         <Icon guid="ImageCatalogGuid" id="DeploymentConfigurationExtension" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
-          <ButtonText>VS Package Load Explorer</ButtonText>
+          <ButtonText>Package Load Explorer</ButtonText>
         </Strings>
       </Button>
     </Buttons>
