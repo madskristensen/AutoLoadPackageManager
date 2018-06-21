@@ -20,7 +20,7 @@ namespace AutoLoadPackageManager
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            PackageManagerToolWindowCommand.Initialize(this);
+            await PackageManagerToolWindowCommand.InitializeAsync(this);
         }
 
         public override IVsAsyncToolWindowFactory GetAsyncToolWindowFactory(Guid toolWindowType)

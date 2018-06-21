@@ -1,28 +1,21 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
+using Task = System.Threading.Tasks.Task;
 
 namespace AutoLoadPackageManager
 {
     internal sealed class PackageManagerToolWindowCommand
     {
-        public const int CommandId = 0x0100;
+        private readonly AsyncPackage _package;
 
-        public static readonly Guid CommandSet = new Guid("c8228f23-0c49-4b65-9e37-5e1f45a95799");
-
-        private readonly Package _package;
-
-        private PackageManagerToolWindowCommand(Package package)
+        private PackageManagerToolWindowCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
             _package = package ?? throw new ArgumentNullException(nameof(package));
 
-            if (ServiceProvider.GetService(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
-            {
-                var menuCommandID = new CommandID(CommandSet, CommandId);
-                var menuItem = new MenuCommand(ShowToolWindow, menuCommandID);
-                commandService.AddCommand(menuItem);
-            }
+            var menuCommandID = new CommandID(PackageGuids.guidAutoLoadPackageManagerCmdSet, PackageIds.PackageManagerToolWindowCommandId);
+            var menuItem = new MenuCommand(ShowToolWindow, menuCommandID);
+            commandService.AddCommand(menuItem);
         }
 
         public static PackageManagerToolWindowCommand Instance
@@ -39,23 +32,22 @@ namespace AutoLoadPackageManager
             }
         }
 
-        public static void Initialize(Package package)
+        public static async Task InitializeAsync(AsyncPackage package)
         {
-            Instance = new PackageManagerToolWindowCommand(package);
+            var commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
+            Instance = new PackageManagerToolWindowCommand(package, commandService);
         }
 
         private void ShowToolWindow(object sender, EventArgs e)
         {
-            ThreadHelper.ThrowIfNotOnUIThread();
-            ToolWindowPane window = _package.FindToolWindow(typeof(PackageManagerToolWindow), 0, true);
-
-            if ((null == window) || (null == window.Frame))
+            _package.JoinableTaskFactory.RunAsync(async () =>
             {
-                throw new NotSupportedException("Cannot create tool window");
-            }
-
-            var windowFrame = (IVsWindowFrame)window.Frame;
-            Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
+                ToolWindowPane window = await _package.ShowToolWindowAsync(
+                    toolWindowType: typeof(PackageManagerToolWindow),
+                    id: 0,
+                    create: true,
+                    cancellationToken: _package.DisposalToken);
+            });
         }
     }
 }
