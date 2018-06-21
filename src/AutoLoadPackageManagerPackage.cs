@@ -25,8 +25,8 @@ namespace AutoLoadPackageManager
 
         public override IVsAsyncToolWindowFactory GetAsyncToolWindowFactory(Guid toolWindowType)
         {
-            return toolWindowType.Equals(new Guid(PackageManagerToolWindow.WindowGuid)) 
-                ? (this) 
+            return toolWindowType.Equals(new Guid(PackageManagerToolWindow.WindowGuid))
+                ? (this)
                 : null;
         }
 
@@ -37,9 +37,11 @@ namespace AutoLoadPackageManager
                 : base.GetToolWindowTitle(toolWindowType, id);
         }
 
-        protected override Task<object> InitializeToolWindowAsync(Type toolWindowType, int id, CancellationToken cancellationToken)
+        protected override async Task<object> InitializeToolWindowAsync(Type toolWindowType, int id, CancellationToken cancellationToken)
         {
-            return Task.FromResult<object>(new ShellSettingsManager(this));
+            await JoinableTaskFactory.SwitchToMainThreadAsync();
+            var mgr = await GetServiceAsync(typeof(SVsSettingsManager)) as IVsSettingsManager;
+            return new ShellSettingsManager(mgr);
         }
     }
 }
