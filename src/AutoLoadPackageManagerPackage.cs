@@ -12,7 +12,7 @@ namespace AutoLoadPackageManager
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [Guid(PackageGuids.guidAutoLoadPackageManagerString)]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]    
     [ProvideToolWindow(typeof(PackageManagerToolWindow), Style = VsDockStyle.Tabbed, Window = "DocumentWell", Orientation = ToolWindowOrientation.none)]
     public sealed class AutoLoadPackageManagerPackage : AsyncPackage
     {

@@ -5,14 +5,14 @@
 // ------------------------------------------------------------------------------
 namespace AutoLoadPackageManager
 {
-    static class Vsix
-    {
-        public const string Id = "AutoLoadPackageManager.d28343a5-6123-475e-9f5d-63705c8e166e";
-        public const string Name = "Package Load Explorer";
-        public const string Description = @"Shows information about how VS packages are loaded in Visual Studio.";
-        public const string Language = "en-US";
-        public const string Version = "1.0.999";
-        public const string Author = "Mads Kristensen";
-        public const string Tags = "vsix, extensions";
-    }
+				static class Vsix
+				{
+								public const string Id = "AutoLoadPackageManager.d28343a5-6123-475e-9f5d-63705c8e166e";
+								public const string Name = "Package Load Explorer";
+								public const string Description = @"Shows information about how VS packages are loaded in Visual Studio.";
+								public const string Language = "en-US";
+								public const string Version = "1.0.999";
+								public const string Author = "Mads Kristensen";
+								public const string Tags = "vsix, extensions";
+				}
 }
